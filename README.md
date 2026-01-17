@@ -62,3 +62,16 @@ Philosophy 🎯
 WhistlerLang isn’t about being fancy or overcomplicated.
 It’s about making programming feel human, a bit cheeky, and absolutely approachable.
 Think of it as coding with a friend who’s slightly British, very polite, and occasionally throws in an emoji
+
+
+
+
+# artists :D
+
+
+<img width="1920" height="1920" alt="InShot_20260117_165332877" src="https://github.com/user-attachments/assets/d9d5dbb8-f98b-494e-ac34-13314873c6a1" />
+
+
+
+
+<img width="1920" height="1920" alt="InShot_20260117_165136235" src="https://github.com/user-attachments/assets/8d6b5c6a-1195-4e21-9ff5-3613cc342671" />
