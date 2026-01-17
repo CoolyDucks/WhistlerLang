@@ -32,7 +32,6 @@ It’s **readable**, **logical**, and occasionally **sassy**. Perfect for small 
 
 ### Run a script:
 
-```bash
 whistlerlang run <script.whlst>
 
 Example meow.whlst:
