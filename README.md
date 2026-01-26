@@ -19,7 +19,6 @@ math.add(5 6)
 
 Prompt look like this 🟢  (the best thing to read)
 
-```text
 WhistlerLang 1.0 >>> say("Hi there")
 Hi there
 WhistlerLang 1.0 >>> run example.whlst
