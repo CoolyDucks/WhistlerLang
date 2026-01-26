@@ -1,7 +1,7 @@
 
-# WhistlerLang 1.0 🚀
+# WhistlerLang  🚀
 
-Welcome to WhistlerLang 1.0 by CoolyDucks 🐤  
+Welcome to WhistlerLang by CoolyDucks 🐤  
 The first version of my programming language 🎉  
 
 WhistlerLang is easy medium level language 💻  
