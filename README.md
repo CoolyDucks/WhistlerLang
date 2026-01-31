@@ -1,68 +1,67 @@
+# WhistlerLang 🐧🦆
 
-# WhistlerLang  🚀
+WhistlerLang is my custom programming language built for fun learning experimenting and making cool scripts WhistlerLang aims to be simple fast and powerful supporting scripting automation and editor mode
 
-Welcome to WhistlerLang by CoolyDucks 🐤  
-The first version of my programming language 🎉  
+## Features ✨
 
-WhistlerLang is easy medium level language 💻  
-It run scripts fast and compile to ELF for Linux amd64 amd32 arm64 arm32 ⚡  
+- Interactive REPL terminal
+- Internal editor with yellow prompts ALT+Q to save and exit
+- run scripts `.whlst` files
+- say("text") prints green colored text
+- define functions with `func <name>` syntax
+- math operations add sub mul div mod
+- source command creates installsource.sh to clone the Open Source repo
+- Designed for multi-platform Linux Windows MacOS BSD Haiku and more
+- MIT License included in every build
 
-Type `quit` for exit  
-Type `run <script.whlst>` for run a script  
-Type `help` for learning WhistlerLang 📖  (SOOOO EASY!!)
+## How to Install 🚀
 
-## Example 💡
+Clone the repository
 
-say("Hello World")  
-sift(1 2 3 4)  
-math.add(5 6)  
 
-Prompt look like this 🟢  (the best thing to read)
+git clone https://github.com/CoolyDucks/WhistlerLang
 
-WhistlerLang 1.0 >>> say("Hi there")
-Hi there
-WhistlerLang 1.0 >>> run example.whlst
-...
-WhistlerLang 1.0 >>> quit
+Go to folder and build using Go for your platform
 
-How to download and run ⬇️
-
-1️⃣ Clone the repository
-
-git clone https://github.com/CoolyDucks/WhistlerLang.git
 cd WhistlerLang
+./build.sh   # future build script
 
-2️⃣ Build WhistlerLang ELF
+How to Run 💻
 
-cd source
-GOARCH=amd64 GOOS=linux go build -o ../WhistlerLang
-GOARCH=386 GOOS=linux go build -o ../WhistlerLang386
-GOARCH=arm64 GOOS=linux go build -o ../WhistlerLangArm64
-GOARCH=arm GOOS=linux go build -o ../WhistlerLangArm
+Start the REPL
 
-3️⃣ Run WhistlerLang
+./WhistlerLang      # Linux
+WhistlerLang.exe    # Windows
 
-./WhistlerLang
+Commands inside REPL
 
-Type your scripts or run .whlst files easily
+quit        exit WhistlerLang
+run <file>  run a WhistlerLang script
+edit        open internal editor
+say("Hi")   print colored text
+source      download Open Source repo
+help        show this help menu
 
-License 📜
+Example 🎨
+
+say("Hello World")
+func greet
+  say("Hi everyone")
+end
+greet()
+
+License 📝
 
 MIT License
-Copyright (c) 2026 CoolyDucks 🐤
 
-Permission is hereby granted free of charge to any person obtaining a copy
-of this software and associated documentation files the Software to deal
-in the Software without restriction including without limitation the rights
-to use copy modify merge publish distribute sublicense and or sell copies
-of the Software and to permit persons to whom the Software is furnished to do so
-subject to the following conditions
+Copyright (c) 2026 CoolyDucks
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software
+Permission is hereby granted free of charge to any person obtaining a copy of this software and associated documentation files the "Software" to deal in the Software without restriction including without limitation the rights to use copy modify merge publish distribute sublicense and/or sell copies of the Software and to permit persons to whom the Software is furnished to do so subject to the following conditions
 
-THE SOFTWARE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND EXPRESS OR IMPLIED
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM DAMAGES OR OTHER LIABILITY WHETHER IN AN ACTION OF CONTRACT
-TORT OR OTHERWISE ARISING OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software
+
+THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND EXPRESS OR IMPLIED INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM DAMAGES OR OTHER LIABILITY WHETHER IN AN ACTION OF CONTRACT TORT TORT OR OTHERWISE ARISING FROM OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+
+GitHub 🔗
+
+https://github.com/CoolyDucks/WhistlerLang
