@@ -7,12 +7,49 @@ import (
 	"strings"
 )
 
+var lastSay string
+var vars = make(map[string]float64)
 var colorMap = map[string]string{
-	"green":  "\033[32m",
-	"red":    "\033[31m",
-	"yellow": "\033[33m",
-	"blue":   "\033[34m",
-	"reset":  "\033[0m",
+	"reset":   "\033[0m",
+	"red":     "\033[31m",
+	"green":   "\033[32m",
+	"yellow":  "\033[33m",
+	"blue":    "\033[34m",
+	"magenta": "\033[35m",
+	"cyan":    "\033[36m",
+}
+
+func ExecuteLine(cmd Command) {
+	switch cmd.Type {
+	case CMD_SAY:
+		lastSay = cmd.Text
+		fmt.Println(lastSay)
+	case CMD_DO_COLOR:
+		code, ok := colorMap[cmd.Color]
+		if !ok {
+			code = colorMap["reset"]
+		}
+		fmt.Print(code)
+		if lastSay != "" {
+			fmt.Println(lastSay)
+		}
+		fmt.Print(colorMap["reset"])
+	case CMD_MATH:
+		res, err := EvalExpression(cmd.Expr, vars)
+		if err != nil {
+			fmt.Println("Math error:", err)
+			return
+		}
+		fmt.Println(res)
+	case CMD_IF:
+		if lastSay == cmd.Text {
+			ExecuteLine(Command{Type: CMD_DO_COLOR, Color: cmd.Color})
+		}
+	case CMD_END:
+		return
+	default:
+		fmt.Println("Unknown command:", cmd.Text)
+	}
 }
 
 func RunScript(file string) {
@@ -24,9 +61,8 @@ func RunScript(file string) {
 	defer f.Close()
 
 	scanner := bufio.NewScanner(f)
-	var functions = make(map[string][]string)
-	var currentFunc string
-	var inFunc bool
+	inMath := false
+	var mathBlock []string
 
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
@@ -34,48 +70,27 @@ func RunScript(file string) {
 			continue
 		}
 
-		if strings.HasPrefix(line, "func ") {
-			currentFunc = strings.TrimSpace(strings.TrimPrefix(line, "func "))
-			functions[currentFunc] = []string{}
-			inFunc = true
+		cmd := ParseLine(line)
+
+		if inMath {
+			if cmd.Type == CMD_END {
+				for _, ml := range mathBlock {
+					e := ParseLine(ml)
+					ExecuteLine(e)
+				}
+				inMath = false
+				mathBlock = mathBlock[:0]
+			} else {
+				mathBlock = append(mathBlock, line)
+			}
 			continue
 		}
 
-		if line == "end" && inFunc {
-			currentFunc = ""
-			inFunc = false
+		if cmd.Type == CMD_MATH_BLOCK {
+			inMath = true
 			continue
 		}
 
-		if inFunc {
-			functions[currentFunc] = append(functions[currentFunc], line)
-			continue
-		}
-
-		// Not in function → execute direct command
-		executeLine(line, functions)
-	}
-}
-
-func executeLine(line string, functions map[string][]string) {
-	if strings.HasPrefix(line, "say(") && strings.HasSuffix(line, ")") {
-		content := line[4 : len(line)-1]
-		fmt.Println(content)
-		return
-	}
-
-	if strings.HasPrefix(line, "text.color*") && strings.HasSuffix(line, "*") {
-		colorName := line[11 : len(line)-1]
-		if code, ok := colorMap[colorName]; ok {
-			fmt.Print(code)
-		}
-		return
-	}
-
-	if fn, ok := functions[line]; ok {
-		for _, l := range fn {
-			executeLine(l, functions)
-		}
-		return
+		ExecuteLine(cmd)
 	}
 }
