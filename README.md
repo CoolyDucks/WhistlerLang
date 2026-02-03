@@ -1,4 +1,4 @@
-# WhistlerLang 🐧🦆
+## WhistlerLang 🐧🦆
 
 WhistlerLang is my custom programming language built for fun learning experimenting and making cool scripts WhistlerLang aims to be simple fast and powerful supporting scripting automation and editor mode
 
@@ -55,6 +55,22 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND EXPRESS OR IMPLIED INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM DAMAGES OR OTHER LIABILITY WHETHER IN AN ACTION OF CONTRACT TORT TORT OR OTHERWISE ARISING FROM OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 ```
 
+
+
 GitHub 🔗
 
 https://github.com/CoolyDucks/WhistlerLang
+
+---------
+
+# Debian Community ♦️
+
+- The **Debian Community** is The WhistlerLang for Debian, Ubuntu, And Mint And it official by CoolyDucks and it is `.deb` file's And a it is Unix Archive (Ar) with a information's about the version
+
+
+--------
+
+v1.2 BETA MIT
+
+For amd64 (amd64/x86_32)[https://drive.proton.me/urls/NPWJFXJAFM#Oi2BfWpcyHcr]
+(Coming Soon Another Version's of Debían packages)
