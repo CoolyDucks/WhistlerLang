@@ -5,10 +5,10 @@ WhistlerLang is my custom programming language built for fun learning experiment
 ## Features ✨
 
 - Interactive REPL terminal
-- Internal editor with yellow prompts ALT+Q to save and exit
+- Internal editor with yellow prompts ALT+Q to save and exit (cancelled 😐)
 - run scripts `.whlst` files
 - say("text") prints green colored text
-- define functions with `func <name>` syntax
+- define functions
 - math operations add sub mul div mod
 - source command creates installsource.sh to clone the Open Source repo
 - Designed for multi-platform Linux Windows MacOS BSD Haiku and more
@@ -18,21 +18,14 @@ WhistlerLang is my custom programming language built for fun learning experiment
 
 Clone the repository
 
-
+```bash
 git clone https://github.com/CoolyDucks/WhistlerLang
-
+```
 Go to folder and build using Go for your platform
-
+```bash
 cd WhistlerLang
-./build.sh   # future build script
-
-How to Run 💻
-
-Start the REPL
-
-./WhistlerLang      # Linux
-WhistlerLang.exe    # Windows
-
+./build.sh   
+```
 Commands inside REPL
 
 quit        exit WhistlerLang
@@ -44,14 +37,13 @@ help        show this help menu
 
 Example 🎨
 
-say("Hello World")
-func greet
-  say("Hi everyone")
-end
-greet()
+```code
+say "Hi!"
+```
 
 License 📝
 
+```licence
 MIT License
 
 Copyright (c) 2026 CoolyDucks
@@ -61,6 +53,7 @@ Permission is hereby granted free of charge to any person obtaining a copy of th
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software
 
 THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND EXPRESS OR IMPLIED INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM DAMAGES OR OTHER LIABILITY WHETHER IN AN ACTION OF CONTRACT TORT TORT OR OTHERWISE ARISING FROM OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+```
 
 GitHub 🔗
 
