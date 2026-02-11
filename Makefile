@@ -1,49 +1,61 @@
-# Makefile for WhistlerLang 1.2 (think about it, you are not Windows User)
-# Builds for....wait a second 
+SRC_DIR := source
+BUILD_DIR := release
+BIN := $(BUILD_DIR)/wl
+YELLOW := \033[1;33m
+RESET := \033[0m
 
-SRC=source/*.go
-BUILD_DIR=build
+.PHONY: help
+help:
+	@echo "WhistlerLang v1.2 Commands:"
+	@echo "  make run           - Run a WhistlerLang script"
+	@echo "  make install repo  - Clone WhistlerLang repo from GitHub"
+	@echo "  make dash          - Check and fix source folder structure"
+	@echo "  make gnu           - Prepare GNU tools"
+	@echo "  make busybox       - Prepare BusyBox tools"
+	@echo "  make etcinfo       - Display Whistler word in yellow ASCII art"
 
-all: linux-amd64 linux-386 linux-arm64 freebsd-amd64 openbsd-x86 netbsd-amd64 windows-amd64 windows-x86 mac-x64 mac-arm android-arm
+.PHONY: build
+build:
+	@mkdir -p $(BUILD_DIR)
+	@echo "Building WhistlerLang..."
+	@go build -o $(BIN) $(SRC_DIR)/main.go
+	@echo "Build completed: $(BIN)"
 
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+.PHONY: run
+run:
+	@if [ -z "$(file)" ]; then \
+		echo "Usage: make run file=<script.whlst>"; \
+	else \
+		$(BIN) run $(file); \
+	fi
 
-linux-amd64: $(BUILD_DIR)
-	GOOS=linux GOARCH=amd64 go build -o $(BUILD_DIR)/WhistlerLang-linux-amd64 $(SRC)
+.PHONY: install
+install:
+	@git clone https://github.com/CoolyDucks/WhistlerLang.git
+	@echo "Repository cloned successfully"
 
-linux-386: $(BUILD_DIR)
-	GOOS=linux GOARCH=386 go build -o $(BUILD_DIR)/WhistlerLang-linux-386 $(SRC)
+.PHONY: dash
+dash:
+	@mkdir -p $(SRC_DIR)/parser $(SRC_DIR)/evaluator $(SRC_DIR)/runtime $(SRC_DIR)/objecting $(SRC_DIR)/utils
+	@echo "Folders verified/created"
 
-linux-arm64: $(BUILD_DIR)
-	GOOS=linux GOARCH=arm64 go build -o $(BUILD_DIR)/WhistlerLang-linux-arm64 $(SRC)
+.PHONY: gnu
+gnu:
+	@which gcc >/dev/null 2>&1 || { echo "GCC not found, install it first"; exit 1; }
+	@which make >/dev/null 2>&1 || { echo "Make not found, install it first"; exit 1; }
+	@echo "GNU tools ready"
 
-freebsd-amd64: $(BUILD_DIR)
-	GOOS=freebsd GOARCH=amd64 go build -o $(BUILD_DIR)/WhistlerLang-freebsd-amd64 $(SRC)
+.PHONY: busybox
+busybox:
+	@which busybox >/dev/null 2>&1 || { echo "BusyBox not installed"; exit 1; }
+	@echo "BusyBox tools ready"
 
-openbsd-x86: $(BUILD_DIR)
-	GOOS=openbsd GOARCH=386 go build -o $(BUILD_DIR)/WhistlerLang-openbsd-x86 $(SRC)
-
-netbsd-amd64: $(BUILD_DIR)
-	GOOS=netbsd GOARCH=amd64 go build -o $(BUILD_DIR)/WhistlerLang-netbsd-amd64 $(SRC)
-
-windows-amd64: $(BUILD_DIR)
-	GOOS=windows GOARCH=amd64 go build -o $(BUILD_DIR)/WhistlerLang-windows-amd64.exe $(SRC)
-
-windows-x86: $(BUILD_DIR)
-	GOOS=windows GOARCH=386 go build -o $(BUILD_DIR)/WhistlerLang-windows-x86.exe $(SRC)
-
-mac-x64: $(BUILD_DIR)
-	GOOS=darwin GOARCH=amd64 go build -o $(BUILD_DIR)/WhistlerLang-mac-x64 $(SRC)
-
-mac-arm: $(BUILD_DIR)
-	GOOS=darwin GOARCH=arm64 go build -o $(BUILD_DIR)/WhistlerLang-mac-arm $(SRC)
-
-android-arm: $(BUILD_DIR)
-	# Requires NDK installed and arm-linux-androideabi-gcc available
-	GOOS=android GOARCH=arm CGO_ENABLED=1 CC=arm-linux-androideabi-gcc go build -o $(BUILD_DIR)/WhistlerLang-android-arm $(SRC)
-
-clean:
-	rm -rf $(BUILD_DIR)/*
-
-.PHONY: all clean linux-amd64 linux-386 linux-arm64 freebsd-amd64 openbsd-x86 netbsd-amd64 windows-amd64 windows-x86 mac-x64 mac-arm android-arm
+.PHONY: etcinfo
+etcinfo:
+	@echo -e "$(YELLOW)"
+	@echo "██       ██ ███████ ███████ ███████ ███████ ███████"
+	@echo "██       ██ ██      ██      ██      ██      ██     "
+	@echo "██   █   ██ █████   █████   █████   █████   █████ "
+	@echo "██  ███  ██ ██      ██      ██      ██      ██     "
+	@echo " ███   ███  ███████ ███████ ███████ ███████ ███████"
+	@echo -e "$(RESET)"
