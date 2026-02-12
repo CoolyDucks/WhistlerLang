@@ -1,96 +1,98 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
+	"context"
+	"errors"
 	"os"
-	"strings"
+	"os/exec"
+	"path/filepath"
+	"runtime"
+	"sync"
+	"time"
 )
 
-var lastSay string
-var vars = make(map[string]float64)
-var colorMap = map[string]string{
-	"reset":   "\033[0m",
-	"red":     "\033[31m",
-	"green":   "\033[32m",
-	"yellow":  "\033[33m",
-	"blue":    "\033[34m",
-	"magenta": "\033[35m",
-	"cyan":    "\033[36m",
+type ValKind int
+
+const (
+	ValNone ValKind = iota
+	ValNumber
+	ValString
+)
+
+type Value struct {
+	Kind ValKind
+	Num  float64
+	Str  string
 }
 
-func ExecuteLine(cmd Command) {
-	switch cmd.Type {
-	case CMD_SAY:
-		lastSay = cmd.Text
-		fmt.Println(lastSay)
-	case CMD_DO_COLOR:
-		code, ok := colorMap[cmd.Color]
-		if !ok {
-			code = colorMap["reset"]
-		}
-		fmt.Print(code)
-		if lastSay != "" {
-			fmt.Println(lastSay)
-		}
-		fmt.Print(colorMap["reset"])
-	case CMD_MATH:
-		res, err := EvalExpression(cmd.Expr, vars)
-		if err != nil {
-			fmt.Println("Math error:", err)
-			return
-		}
-		fmt.Println(res)
-	case CMD_IF:
-		if lastSay == cmd.Text {
-			ExecuteLine(Command{Type: CMD_DO_COLOR, Color: cmd.Color})
-		}
-	case CMD_END:
-		return
-	default:
-		fmt.Println("Unknown command:", cmd.Text)
+type RuntimeEnv struct {
+	WorkDir   string
+	Variables map[string]Value
+	mu        sync.RWMutex
+}
+
+var GlobalRuntime = &RuntimeEnv{
+	WorkDir:   ".",
+	Variables: map[string]Value{},
+}
+
+func (r *RuntimeEnv) SetWorkDir(dir string) error {
+	if dir == "" {
+		return errors.New("empty")
 	}
+	r.mu.Lock()
+	r.WorkDir = dir
+	r.mu.Unlock()
+	return nil
 }
 
-func RunScript(file string) {
-	f, err := os.Open(file)
+func (r *RuntimeEnv) RunScript(path string) error {
+	abs := path
+	if !filepath.IsAbs(path) {
+		abs = filepath.Join(r.WorkDir, path)
+	}
+	nodes, err := ParseFileToNodes(abs)
 	if err != nil {
-		fmt.Println("Cannot open file:", file)
-		return
+		return err
 	}
-	defer f.Close()
+	return EvaluateNodes(nodes, r)
+}
 
-	scanner := bufio.NewScanner(f)
-	inMath := false
-	var mathBlock []string
-
-	for scanner.Scan() {
-		line := strings.TrimSpace(scanner.Text())
-		if line == "" {
-			continue
-		}
-
-		cmd := ParseLine(line)
-
-		if inMath {
-			if cmd.Type == CMD_END {
-				for _, ml := range mathBlock {
-					e := ParseLine(ml)
-					ExecuteLine(e)
-				}
-				inMath = false
-				mathBlock = mathBlock[:0]
-			} else {
-				mathBlock = append(mathBlock, line)
-			}
-			continue
-		}
-
-		if cmd.Type == CMD_MATH_BLOCK {
-			inMath = true
-			continue
-		}
-
-		ExecuteLine(cmd)
+func (r *RuntimeEnv) BuildScript(path, out, arch string) (string, error) {
+	abs := path
+	if !filepath.IsAbs(path) {
+		abs = filepath.Join(r.WorkDir, path)
 	}
+	return BuildScriptToObject(abs, out, arch)
+}
+
+func (r *RuntimeEnv) ExecShell(cmdline string, safe bool) (string, error) {
+	if cmdline == "" {
+		return "", errors.New("empty")
+	}
+	if safe {
+		parts := splitArgs(cmdline)
+		if len(parts) == 0 {
+			return "", errors.New("empty")
+		}
+		allowed := map[string]bool{"echo": true, "ls": true, "date": true}
+		if !allowed[parts[0]] {
+			return "", errors.New("not allowed")
+		}
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	var shell, flag string
+	if runtime.GOOS == "windows" {
+		shell = "cmd"
+		flag = "/C"
+	} else {
+		shell = "sh"
+		flag = "-c"
+	}
+	c := exec.CommandContext(ctx, shell, flag, cmdline)
+	c.Env = os.Environ()
+	c.Dir = r.WorkDir
+	out, err := c.CombinedOutput()
+	return string(out), err
 }
