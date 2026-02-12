@@ -1,76 +1,83 @@
-## WhistlerLang 🐧🦆
+# WhistlerLang
 
-WhistlerLang is my custom programming language built for fun learning experimenting and making cool scripts WhistlerLang aims to be simple fast and powerful supporting scripting automation and editor mode
+**WhistlerLang** is a custom programming language for **learning, prototyping, and creating scripts**.  
+—MATE!
+
+---
 
 ## Features ✨
 
-- Interactive REPL terminal
-- Internal editor with yellow prompts ALT+Q to save and exit (cancelled 😐)
-- run scripts `.whlst` files
-- say("text") prints green colored text
-- define functions
-- math operations add sub mul div mod
-- source command creates installsource.sh to clone the Open Source repo
-- Designed for multi-platform Linux Windows MacOS BSD Haiku and more
-- MIT License included in every build
+- Interactive **REPL terminal** for rapid experimentation  
+- Run `.whlst` scripts with `run <file.whlst>`  
+- `say "text"` → prints text in REPL  
+- Strong typing for variables declared with `let`  
+- Conditional blocks with `if`, `elif`, `else`, and `end`  
+- Time commands:  
+  - `time.print` → prints current time  
+  - `time.set "<FORMAT>" "<PREF>"` → change time format  
 
-## How to Install 🚀
+---
 
-Clone the repository
+## Installation 🚀
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/CoolyDucks/WhistlerLang
-```
-Go to folder and build using Go for your platform
-```bash
 cd WhistlerLang
-./build.sh   
-```
-Commands inside REPL
-
-quit        exit WhistlerLang
-run <file>  run a WhistlerLang script
-edit        open internal editor
-say("Hi")   print colored text
-source      download Open Source repo
-help        show this help menu
-
-Example 🎨
-
-```code
-say "Hi!"
+./build.sh
 ```
 
-License 📝
+---
+
+## REPL Commands
+
+- `quit` / `exit` → exit WhistlerLang  
+- `run <file.whlst>` → run a WhistlerLang script  
+- `say "text"` → print a string  
+- `time.print` → show current time  
+- `time.set "<FORMAT>" "<PREF>"` → change time format  
+- `help` → show help menu  
+
+---
+
+## Example Usage 🎨
+
+```
+say "Hello World from WhistlerLang!"
+let user = "Alice"
+say "Welcome " + user + " to Syntexly That Beautiful"
+time.print
+time.set "{date} {hou}:{min}:{sec}" "ms"
+time.print
+let score = 85
+if score >= 90
+    say "Grade: A"
+elif score >= 80
+    say "Grade: B"
+else
+    say "Grade: C or below"
+end
+```
+
+---
+
+## License 📝
 
 ```licence
-MIT License
+Furry Public Licence v1.0
 
-Copyright (c) 2026 CoolyDucks
+YOURNAME ^ 2026
 
-Permission is hereby granted free of charge to any person obtaining a copy of this software and associated documentation files the "Software" to deal in the Software without restriction including without limitation the rights to use copy modify merge publish distribute sublicense and/or sell copies of the Software and to permit persons to whom the Software is furnished to do so subject to the following conditions
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software
-
-THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND EXPRESS OR IMPLIED INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM DAMAGES OR OTHER LIABILITY WHETHER IN AN ACTION OF CONTRACT TORT TORT OR OTHERWISE ARISING FROM OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+- When modifying a project, the names of project authors cannot be changed
+- License of the original project cannot be altered
+- Comments can be edited but cannot mention the original script owner
+- Projects must remain safe and not harm devices
+- Not crediting the original creator is considered a violation
 ```
 
+---
 
-
-GitHub 🔗
+## GitHub 🔗
 
 https://github.com/CoolyDucks/WhistlerLang
-
----------
-
-# Debian Community ♦️
-
-- The **Debian Community** is The WhistlerLang for Debian, Ubuntu, And Mint And it official by CoolyDucks and it is `.deb` file's And a it is Unix Archive (Ar) with a information's about the version
-
-
---------
-
-v1.2 BETA MIT
-
-For amd64 (amd64/x86_32)[https://drive.proton.me/urls/NPWJFXJAFM#Oi2BfWpcyHcr]
-(Coming Soon Another Version's of Debían packages)
