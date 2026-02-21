@@ -62,7 +62,7 @@ end
 
 ---
 
-## License 📝
+## License
 
 ```licence
 ----------------------
