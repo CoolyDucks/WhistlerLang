@@ -5,7 +5,7 @@
 
 ---
 
-## Features ✨
+## Features 
 
 - Interactive **REPL terminal** for rapid experimentation  
 - Run `.whlst` scripts with `run <file.whlst>`  
@@ -18,7 +18,7 @@
 
 ---
 
-## Installation 🚀
+## Installation 
 
 Clone the repository:
 
@@ -41,7 +41,7 @@ cd WhistlerLang
 
 ---
 
-## Example Usage 🎨
+## Example Usage 
 
 ```
 say "Hello World from WhistlerLang!"
@@ -65,31 +65,47 @@ end
 ## License 📝
 
 ```licence
-MIT License
+----------------------
+----------------------
 
-Copyright (c) 2026 CoolyDucks
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+LinkFurry License v1.0
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+----------------------
+----------------------
+  
+  
+  
+Copyright (c) 2026, CoolyDucks (All rights reserved)  
+Permission is granted, without charge, to any individual, organisation, or entity obtaining a copy of this software (hereinafter referred to as "the Software") and its documentation, to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit others to whom the Software is provided to do the same, provided that all of the following conditions are strictly observed:  
+  
+  
+Preservation of Notices  
+All copies, modified versions, derivative works, or adaptations of the Software, whether in source code, binary form, or any other form, must retain this copyright notice, the complete text of this license, all disclaimers, and any associated legal notices.  
+Use of Name  
+The name "LinkFurry", the copyright holder, or any contributor may not be used to endorse, promote, advertise, or imply association with any derivative works, software products, or services without explicit prior written consent from the copyright holder. No person or entity may claim that the original creator endorses, sponsors, or supports any modified version or derivative project.  
+No Warranty  
+The Software is provided "as is", without any express or implied warranties of any kind, including but not limited to merchantability, fitness for a particular purpose, non-infringement, accuracy, reliability, security, or suitability. The user assumes all risk regarding performance, use, or outcome from any action related to the Software.  
+Liability Disclaimer  
+Under no circumstances shall the copyright holder, contributors, distributors, or licensors of the Software be held responsible for any form of damages, claims, losses, or liabilities, whether direct, indirect, incidental, special, exemplary, or consequential, including without limitation:  
+loss of profits, revenue, or data  
+business interruption, system failure, or downtime  
+breach of privacy, security, or confidentiality  
+procurement of substitute goods, services, or remedies  
+This applies regardless of the cause, including negligence, breach of contract, tort, strict liability, or any other legal theory, even if the possibility of such damages has been communicated or foreseen.  
+Absolute Freedom and Protection  
+Users are granted full freedom to adapt, modify, enhance, or redistribute the Software for any purpose, commercial or non-commercial, subject only to compliance with this license. The author and contributors are fully protected from claims, disputes, or liabilities arising from any use or distribution of the Software, in whole or in part.  
+Derivative Works  
+Any derivative works must explicitly reference LinkFurry v1.0 and retain the above copyright notice, disclaimers, and this license. Modifications or enhancements may not imply endorsement, sponsorship, or support by the original author without prior written consent.  
+Jurisdiction and Severability  
+This license shall be governed by the laws of England and Wales. Should any provision of this license be held invalid, illegal, or unenforceable, the remaining provisions shall continue in full force and effect.  
+Complete Agreement  
+This license represents the entire agreement between the copyright holder and the user regarding the Software. No other terms, conditions, or representations shall apply unless explicitly included in writing.
 ```
 
 ---
 
-## GitHub 🔗
+## GitHub 
 
 https://github.com/CoolyDucks/WhistlerLang
